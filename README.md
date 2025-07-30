@@ -4,7 +4,7 @@ Two microservices demonstrating Spring Boot, MongoDB, Docker, and Kubernetes.
 
 ## Services
 - **BookService**: Create and read books (port 3000)
-- **RecommendedService**: Returns books sorted by rating (port 3000)
+- **RecommendedService**: Returns books sorted by rating (port 3001)
 
 ## Quick Start
 
@@ -13,8 +13,11 @@ Two microservices demonstrating Spring Boot, MongoDB, Docker, and Kubernetes.
 - Java 17+
 - Maven
 
-### Deploy
+### Deploy Everything
 ```bash
+git clone https://github.com/liran-mazor/spring-boot-microservices.git
+cd spring-boot-microservices
+chmod +x deploy.sh
 ./deploy.sh
 ```
 
