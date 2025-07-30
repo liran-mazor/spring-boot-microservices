@@ -15,7 +15,6 @@
     <description>Book Recommendation Service</description>
     <properties>
         <java.version>17</java.version>
-        <mockito.version>5.2.0</mockito.version>
     </properties>
     <dependencies>
         <dependency>
@@ -41,12 +40,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-inline</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -64,7 +57,13 @@
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.util=ALL-UNNAMED
                         --add-opens java.base/java.text=ALL-UNNAMED
+                        --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+                        --add-opens java.base/java.net=ALL-UNNAMED
+                        --add-opens java.base/java.nio=ALL-UNNAMED
+                        --add-opens java.base/java.time=ALL-UNNAMED
                         --add-opens java.desktop/java.awt.font=ALL-UNNAMED
+                        -Djdk.instrument.traceUsage=false
+                        -XX:+EnableDynamicAgentLoading
                     </argLine>
                 </configuration>
             </plugin>
