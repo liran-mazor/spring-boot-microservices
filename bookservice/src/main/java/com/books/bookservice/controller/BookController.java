@@ -22,8 +22,13 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    /**
-     * GET /books - Returns all books
+     /**
+     * Get all books in the system.
+     * 
+     * Note: In a production system with larger datasets, this endpoint should implement
+     * pagination using @RequestParam for page/size parameters and return Page<Book>.
+     * For this assignment, with a maximum capacity of 20 books, returning all books
+     * is acceptable and keeps the implementation simple.
      */
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
