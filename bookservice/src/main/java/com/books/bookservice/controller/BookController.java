@@ -24,6 +24,7 @@ public class BookController {
 
      /**
      * Get all books in the system.
+     * Exceptions bubble up to GlobalExceptionHandler for consistent JSON error format.
      * 
      * Note: In a production system with larger datasets, this endpoint should implement
      * pagination using @RequestParam for page/size parameters and return Page<Book>.
@@ -52,8 +53,7 @@ public class BookController {
 
     /**
      * POST /books - Add new book
-     * @Valid triggers validation annotations on Book model
-     * Exceptions bubble up to GlobalExceptionHandler for consistent JSON error format
+     * @Valid triggers validation annotations on Book mode
      */
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
