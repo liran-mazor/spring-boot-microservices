@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+// Exceptions bubble up to GlobalExceptionHandler for consistent JSON error format.
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
@@ -24,8 +25,6 @@ public class BookController {
 
      /**
      * Get all books in the system.
-     * Exceptions bubble up to GlobalExceptionHandler for consistent JSON error format.
-     * 
      * Note: In a production system with larger datasets, this endpoint should implement
      * pagination using @RequestParam for page/size parameters and return Page<Book>.
      * For this assignment, with a maximum capacity of 20 books, returning all books
