@@ -1,0 +1,8 @@
+com/books/recommendedservice/service/RecommendedService.class
+com/books/recommendedservice/config/RestTemplateConfig.class
+com/books/recommendedservice/client/BookServiceClient$1.class
+com/books/recommendedservice/client/BookServiceClient.class
+com/books/recommendedservice/dto/BookDto.class
+com/books/recommendedservice/RecommendedServiceApplication.class
+com/books/recommendedservice/config/GlobalExceptionHandler.class
+com/books/recommendedservice/controller/RecommendedController.class

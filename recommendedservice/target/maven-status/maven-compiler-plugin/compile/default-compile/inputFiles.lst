@@ -1,0 +1,7 @@
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/controller/RecommendedController.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/RecommendedServiceApplication.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/client/BookServiceClient.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/service/RecommendedService.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/dto/BookDto.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/config/RestTemplateConfig.java
+/home/liran/git/books/recommendedservice/src/main/java/com/books/recommendedservice/config/GlobalExceptionHandler.java

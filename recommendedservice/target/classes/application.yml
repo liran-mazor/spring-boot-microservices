@@ -1,0 +1,17 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: recommended-service
+  
+logging:
+  level:
+    root: WARN
+    com.books.recommendedservice: INFO
+    org.springframework.web.client: INFO
+    org.springframework: WARN
+
+bookservice:
+  url: http://books-srv:3000/api/books
+  

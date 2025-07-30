@@ -1,0 +1,6 @@
+com/books/bookservice/repository/BookRepository.class
+com/books/bookservice/service/BookService.class
+com/books/bookservice/model/Book.class
+com/books/bookservice/BookServiceApplication.class
+com/books/bookservice/config/GlobalExceptionHandler.class
+com/books/bookservice/controller/BookController.class

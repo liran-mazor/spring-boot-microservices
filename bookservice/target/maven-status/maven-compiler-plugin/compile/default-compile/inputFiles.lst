@@ -1,0 +1,6 @@
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/config/GlobalExceptionHandler.java
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/service/BookService.java
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/controller/BookController.java
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/repository/BookRepository.java
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/BookServiceApplication.java
+/home/liran/git/books/bookservice/src/main/java/com/books/bookservice/model/Book.java
