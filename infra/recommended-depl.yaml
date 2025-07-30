@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommended-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommended
+  template:
+    metadata:
+      labels:
+        app: recommended
+    spec:
+      containers:
+        - name: recommended
+          image: liran1789/recommended
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BOOKSERVICE_URL
+              value: "http://books-srv:3000/api/books"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommended-srv
+spec:
+  selector:
+    app: recommended
+  ports:
+    - name: recommended
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

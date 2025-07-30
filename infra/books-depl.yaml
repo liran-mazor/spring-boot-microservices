@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books
+  template:
+    metadata:
+      labels:
+        app: books
+    spec:
+      containers:
+        - name: books
+          image: liran1789/books
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: books-srv
+spec:
+  selector:
+    app: books
+  ports:
+    - name: books
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

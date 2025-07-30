@@ -1,0 +1,27 @@
+apiVersion: skaffold/v4beta7
+kind: Config
+metadata:
+  name: books-microservices
+build:
+  local:
+    push: false
+  artifacts:
+    - image: liran1789/books
+      context: bookservice  
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.java'
+            dest: .
+    - image: liran1789/recommended
+      context: recommendedservice
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.java'
+            dest: .
+manifests:
+  rawYaml:
+    - "infra/*.yaml"
