@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.books.recommendedservice.service.BookServiceClientTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.988 s -- in com.books.recommendedservice.service.BookServiceClientTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.494 s -- in com.books.recommendedservice.service.BookServiceClientTest

@@ -2,9 +2,42 @@
 
 Two microservices demonstrating Spring Boot, MongoDB, Docker, and Kubernetes.
 
+## Architecture
+
+```
+┌─────────────┐
+│   Client    │
+│   Postman   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Ingress   │
+│  books.dev  │
+└──────┬──────┘
+       │
+       ├─── POST /api/books ──────────┐
+       ├─── GET /api/books ───────────┤
+       ├─── GET /api/books/{id} ──────┤
+       │                             ▼
+       │                    ┌─────────────────┐    ┌───────────┐
+       │                    │   BookService   │───▶│ MongoDB   │
+       │                    └─────────┬───────┘    └───────────┘
+       │                              ▲
+       │                              │ GET /api/books
+       │                              │ (dotted)
+       └─── GET /api/recommended ─────┼──────────────────┐
+                                      │                  ▼
+                                      │         ┌─────────────────┐
+                                      └─────────│ RecommendedService 
+                                                └─────────────────┘
+
+Spring Boot Microservices
+```
+
 ## Services
 - **BookService**: Create and read books (port 3000)
-- **RecommendedService**: Returns books sorted by rating (port 3001)
+- **RecommendedService**: Returns books sorted by rating (port 3000)
 
 ## Quick Start
 
@@ -32,7 +65,7 @@ curl -X POST http://localhost:3000/api/books \
 curl http://localhost:3000/api/books
 
 # Get recommended books (sorted by rating)
-curl http://localhost:3001/api/recommended
+curl http://localhost:3000/api/recommended
 ```
 
 ## Commands
@@ -44,7 +77,7 @@ curl http://localhost:3001/api/recommended
 
 ## Structure
 ```
-├── bookservice/        # Book CRUD service
+├── bookservice/        # Book service
 ├── recommendedservice/ # Recommendation service  
 ├── infra/             # Kubernetes manifests
 └── deploy.sh          # Deployment script

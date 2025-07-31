@@ -2,7 +2,6 @@ package com.books.bookservice.service;
 
 import com.books.bookservice.model.Book;
 import com.books.bookservice.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class BookService {
     
     private final BookRepository bookRepository;
     
-    @Autowired
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
