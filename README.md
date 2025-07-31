@@ -57,15 +57,15 @@ chmod +x deploy.sh
 ### Test APIs
 ```bash
 # Create a book
-curl -X POST http://localhost:3000/api/books \
+curl -X POST http://books.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title": "Clean Code", "rating": 9}'
 
 # Get all books
-curl http://localhost:3000/api/books
+curl http://books.dev/api/books
 
 # Get recommended books (sorted by rating)
-curl http://localhost:3000/api/recommended
+curl http://books.dev/api/recommended
 ```
 
 ## Commands
