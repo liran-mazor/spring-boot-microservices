@@ -74,19 +74,3 @@ curl http://localhost:8081/api/recommended
 ./deploy.sh test      # Run tests only (10 unit tests)
 ./deploy.sh cleanup   # Clean build files
 ```
-
-## Features
-- **REST APIs** with proper HTTP status codes
-- **MongoDB integration** with Spring Data
-- **Microservice communication** via RestTemplate
-- **Smart ID generation** with gap-finding algorithm
-- **Comprehensive testing** with Mockito
-- **Global exception handling** with consistent JSON responses
-- **Input validation** with Jakarta Bean Validation
-
-## Structure
-```
-├── bookservice/        # Book management service with MongoDB
-├── recommendedservice/ # Recommendation service (stateless)
-└── deploy.sh          # Build and test script
-```
