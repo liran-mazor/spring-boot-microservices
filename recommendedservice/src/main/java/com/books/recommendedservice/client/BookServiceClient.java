@@ -21,7 +21,7 @@ public class BookServiceClient {
     private final String bookServiceUrl;
     
     public BookServiceClient(RestTemplate restTemplate, 
-                           @Value("${bookservice.url:http://books-srv:3000/api/books}") String bookServiceUrl) {
+                           @Value("${bookservice.url:http://localhost:8080}") String bookServiceUrl) {
         this.restTemplate = restTemplate;
         this.bookServiceUrl = bookServiceUrl;
     }

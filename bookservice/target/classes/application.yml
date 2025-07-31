@@ -1,14 +1,14 @@
 server:
-  port: 3000
+  port: 8080
 
 spring:
   data:
     mongodb:
-      host: books-mongo-srv
+      host: localhost
       port: 27017
       database: book
   application:
-    name: bookservice
+    name: books-service
 
 logging:
   level:

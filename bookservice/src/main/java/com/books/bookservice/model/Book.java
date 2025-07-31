@@ -21,10 +21,8 @@ public class Book {
     @Indexed // Index for faster sorting by rating
     private Integer rating;
     
-    // Default constructor (required by MongoDB)
     public Book() {}
     
-    // Constructor without ID (for new books)
     public Book(String title, Integer rating) {
         this.title = title;
         this.rating = rating;

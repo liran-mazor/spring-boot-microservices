@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-// Exceptions bubble up to GlobalExceptionHandler for consistent JSON error format.
+/**
+ * All exceptions bubble up to GlobalExceptionHandler
+ */
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
@@ -23,7 +25,8 @@ public class BookController {
 
      /**
      * Get all books in the system.
-     * Note: In a production system with larger datasets, this endpoint should implement
+     * 
+     * Note: In larger datasets, this endpoint should implement
      * pagination using @RequestParam for page/size parameters and return Page<Book>.
      * For this assignment, with a maximum capacity of 20 books, returning all books
      * is acceptable and keeps the implementation simple.
@@ -44,17 +47,16 @@ public class BookController {
         if (book.isPresent()) {
             return ResponseEntity.ok(book.get());
         } else {
-            return ResponseEntity.notFound().build(); // 404 Not Found
+            return ResponseEntity.notFound().build(); 
         }
     }
 
     /**
      * POST /books - Add new book
-     * @Valid triggers validation annotations on Book mode
      */
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         Book savedBook = bookService.saveBook(book);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook); // 201 Created
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook); 
     }
 }

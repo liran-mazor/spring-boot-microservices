@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * REST Controller for book recommendations
- * Handles HTTP requests for recommendation endpoints
+ * All exceptions bubble up to GlobalExceptionHandler
  */
 @RestController
 @RequestMapping("/api/recommended")

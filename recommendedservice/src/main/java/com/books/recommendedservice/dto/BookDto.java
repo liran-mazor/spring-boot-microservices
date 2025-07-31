@@ -11,10 +11,8 @@ public class BookDto {
     private String title;
     private Integer rating;
 
-    // Default constructor for Jackson JSON deserialization
     public BookDto() {}
 
-    // Constructor for manual creation
     public BookDto(Integer id, String title, Integer rating) {
         this.id = id;
         this.title = title;

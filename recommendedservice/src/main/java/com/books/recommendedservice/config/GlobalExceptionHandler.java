@@ -8,16 +8,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Handle business logic exceptions (capacity reached, etc.)
- * Returns JSON format: {"httpCode": 400, "message": "error details"}
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
      * Handles RuntimeException (including BookService communication errors)
-     * Returns JSON error response matching the required format
      */
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -1,50 +1,36 @@
 # Spring Boot Microservices - Book System
 
-Two microservices demonstrating Spring Boot, MongoDB, Docker, and Kubernetes.
+Two microservices demonstrating Spring Boot, MongoDB, and REST API communication.
 
 ## Architecture
 
 ```
-┌─────────────┐
-│   Client    │
-│   Postman   │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│   Ingress   │
-│  books.dev  │
-└──────┬──────┘
-       │
-       ├─── POST /api/books ──────────┐
-       ├─── GET /api/books ───────────┤
-       ├─── GET /api/books/{id} ──────┤
-       │                             ▼
-       │                    ┌─────────────────┐    ┌───────────┐
-       │                    │   BookService   │───▶│ MongoDB   │
-       │                    └─────────┬───────┘    └───────────┘
-       │                              ▲
-       │                              │ GET /api/books
-       │                              │ (dotted)
-       └─── GET /api/recommended ─────┼──────────────────┐
-                                      │                  ▼
-                                      │         ┌─────────────────┐
-                                      └─────────│ RecommendedService 
-                                                └─────────────────┘
+┌─────────────┐                            ┌─────────────────┐    ┌───────────┐
+│   Client    │──  POST /api/books    ──▶  │   BookService   │───▶│ MongoDB   │
+│   Postman   │──  GET /api/books     ──▶  │   Port 8080     │    │           │
+│             │──  GET /api/books/{id} ─▶  │                 │    └───────────┘
+└─────────────┘                            └────────┬────────┘             
+       │                                            │                     
+       │                                            │ GET /api/books      
+       │                                            │                     
+       │                             ┌──────────────────┐            
+       └─── GET /api/recommended ───▶│RecommendedService│            
+                                     │   Port 8081      │            
+                                     └──────────────────┘            
 
 Spring Boot Microservices
 ```
 
 ## Services
-- **BookService**: Create and read books (port 3000)
-- **RecommendedService**: Returns books sorted by rating (port 3000)
+- **BookService**: Create and read books with MongoDB (port 8080)
+- **RecommendedService**: Returns books sorted by rating via REST calls (port 8081)
 
 ## Quick Start
 
 ### Prerequisites
-- Docker Desktop with Kubernetes enabled
 - Java 17+
 - Maven
+- MongoDB (Docker): `docker run -d -p 27017:27017 --name mongodb mongo`
 
 ### Deploy Everything
 ```bash
@@ -54,31 +40,53 @@ chmod +x deploy.sh
 ./deploy.sh
 ```
 
+### Start Services Manually
+```bash
+# Terminal 1: Start BookService
+cd bookservice
+mvn spring-boot:run
+
+# Terminal 2: Start RecommendedService  
+cd recommendedservice
+mvn spring-boot:run
+```
+
 ### Test APIs
 ```bash
 # Create a book
-curl -X POST http://books.dev/api/books \
+curl -X POST http://localhost:8080/api/books \
   -H "Content-Type: application/json" \
   -d '{"title": "Clean Code", "rating": 9}'
 
 # Get all books
-curl http://books.dev/api/books
+curl http://localhost:8080/api/books
+
+# Get book by ID
+curl http://localhost:8080/api/books/1
 
 # Get recommended books (sorted by rating)
-curl http://books.dev/api/recommended
+curl http://localhost:8081/api/recommended
 ```
 
 ## Commands
 ```bash
-./deploy.sh           # Deploy everything
-./deploy.sh test      # Run tests only
-./deploy.sh cleanup   # Remove everything
+./deploy.sh           # Run tests and build services
+./deploy.sh test      # Run tests only (10 unit tests)
+./deploy.sh cleanup   # Clean build files
 ```
+
+## Features
+- **REST APIs** with proper HTTP status codes
+- **MongoDB integration** with Spring Data
+- **Microservice communication** via RestTemplate
+- **Smart ID generation** with gap-finding algorithm
+- **Comprehensive testing** with Mockito
+- **Global exception handling** with consistent JSON responses
+- **Input validation** with Jakarta Bean Validation
 
 ## Structure
 ```
-├── bookservice/        # Book service
-├── recommendedservice/ # Recommendation service  
-├── infra/             # Kubernetes manifests
-└── deploy.sh          # Deployment script
+├── bookservice/        # Book management service with MongoDB
+├── recommendedservice/ # Recommendation service (stateless)
+└── deploy.sh          # Build and test script
 ```
